@@ -27,6 +27,14 @@ describe('convertToCamelCase function test', () => {
         var result = index.convertToCamelCase({ Test: 'test' });
         expect(result).to.have.key('test');
     });
+    it('should return lowercase property name', () => {
+        var result = index.convertToCamelCase({ test_test: 'test' });
+        expect(result).to.have.key('testTest');
+    });
+    it('should return lowercase property name', () => {
+        var result = index.convertToCamelCase({ 'test-test': 'test' });
+        expect(result).to.have.key('testTest');
+    });
     it('should return new object', () => {
         var initial = {};
         var result = index.convertToCamelCase(initial);
@@ -63,6 +71,14 @@ describe('convertToPascalCase function test', () => {
     it('should return uppercase property name', () => {
         var result = index.convertToPascalCase({ test: 'test' });
         expect(result).to.have.key('Test');
+    });
+    it('should return uppercase property name', () => {
+        var result = index.convertToPascalCase({ test_test: 'test' });
+        expect(result).to.have.key('TestTest');
+    });
+    it('should return uppercase property name', () => {
+        var result = index.convertToPascalCase({ 'test-test': 'test' });
+        expect(result).to.have.key('TestTest');
     });
     it('should return new object', () => {
         var initial = {};
