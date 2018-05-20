@@ -18,7 +18,7 @@ var newObj = convertToCamelCase(obj);
 // newObj = { key: 'value', ... }
 ```
 
-### javascript
+### Javascript
 
 ```javascript
 var caseConverter = require('ninjapiratica-case-converter');
