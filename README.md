@@ -1,5 +1,5 @@
 # ninjapiratica-case-converter
-Convert objects to a different case. camelCase, PascalCase.
+Convert objects to a different case. camelCase, PascalCase, snake_case.
 
 ## Installation
 ```sh
