@@ -1,4 +1,4 @@
-export function convertToCamelCase<T>(obj: T | T[]) : T | T[] | null {
+export function convertToCamelCase<T>(obj: T) : T {
     return convertCase(obj, (key) => {
         let newKey = removeDelimiterFromKey(key, '-');
         newKey = removeDelimiterFromKey(newKey, '_');
@@ -8,7 +8,7 @@ export function convertToCamelCase<T>(obj: T | T[]) : T | T[] | null {
     });
 }
 
-export function convertToPascalCase<T>(obj: T | T[]) : T | T[] | null {
+export function convertToPascalCase<T>(obj: T) : T {
     return convertCase(obj, (key) => {
         let newKey = removeDelimiterFromKey(key, '-');
         newKey = removeDelimiterFromKey(newKey, '_');
@@ -18,7 +18,7 @@ export function convertToPascalCase<T>(obj: T | T[]) : T | T[] | null {
     });
 }
 
-export function convertToSnakeCase<T>(obj: T | T[]) : T | T[] | null {
+export function convertToSnakeCase<T>(obj: T) : T {
     return convertCase(obj, (key) => {
         let newKey = removeDelimiterFromKey(key, '-');
 
@@ -30,13 +30,13 @@ export function convertToSnakeCase<T>(obj: T | T[]) : T | T[] | null {
     });
 }
 
-function convertCase<T>(obj: T | T[], convertKey: (key: string) => string) : T | T[] | null {
+function convertCase<T>(obj: T, convertKey: (key: string) => string) : T {
     if (obj === null || obj === undefined) {
-        return null;
+        return <T><any>null;
     }
     
     if (Array.isArray(obj)) {
-        return (obj as Array<T>).map(val => convertCase(val, convertKey) as T);
+        return <T><any>(obj as Array<T>).map(val => convertCase(val, convertKey) as T);
     } else if (obj instanceof Date) {
         return obj;
     } else if (typeof obj === 'object') {
